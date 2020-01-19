@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <div id="root"></div>
+    <script>
+        const sub = document.getElementById('submit');
+        const ws = new WebSocket('ws://localhost:3000');
+        function setStatus(value) {
+            console.log(value)
+        }
+        function printMessage(value) {
+            console.log(value);
+        }
+        function SendMessage(){
+            console.log("I'm is Admin and i send message!");
+            ws.send('isUpgrade');
+        }
+        ws.onopen = () => setStatus('ONLINE');
+        ws.onmessage = response => printMessage(response.data);
+    </script>
+<button type="submit" id="upgade" onClick="SendMessage()">
+Send Message is Upgrade
+</button>
+</body>
+
+</html>
